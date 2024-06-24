@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+          body {
+            background-color: #F5F5F5; /* Light Gray */
+            color: #333; /* Dark text for contrast */
+            font-family: 'Poppins', sans-serif; /* Modern, readable font */
+        }
+        .navbar {
+            background-color:#ffb4ae; /* Vibrant Red */
+        }
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+        }
+        .navbar-brand:hover {
+            color: #fff;
+        }
+        .nav-link {
+            color: #fff;
+            margin-right: 1rem;
+        }
+        .nav-link:hover {
+            color: #ffca3a; /* Soft Yellow for hover effect */
+        }
+        .btn-primary {
+            background-color: #ff5e5e; /* Vibrant Red */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #ff4242; /* Darker Red */
+        }
+        .jumbotron {
+            background: linear-gradient(to right, rgba(255, 94, 94, 0.6), rgba(255, 94, 94, 0.2)),
+                        url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png'); /* Light turquoise with pattern */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh; /* Full height */
+            background-size: cover;
+            background-blend-mode: multiply;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .jumbotron h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .jumbotron p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+        .resources-section {
+            background-color: #F9F9F9; /* Light Gray for resources background */
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .resources-section h2 {
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: #ff5e5e; /* Vibrant Red */
+        }
+        .resources-section p {
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .resources-section .btn-light {
+            background-color: #fff;
+            color: #ff5e5e; /* Vibrant Red */
+            border: 1px solid #ff5e5e; /* Vibrant Red border */
+            margin-top: 1rem;
+        }
+        .resources-section .btn-light:hover {
+            background-color: #ff5e5e; /* Vibrant Red */
+            color: #fff;
+        }
+        .accordion-item {
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .accordion-item .accordion-header {
+            background-color: #ff5e5e; /* Vibrant Red */
+            color: #fff;
+            padding: 1rem 2rem;
+            cursor: pointer;
+        }
+        .accordion-item .accordion-header:hover {
+            background-color: #ff4242; /* Darker Red */
+        }
+        .accordion-item .accordion-body {
+            padding: 1rem 2rem;
+        }
+        .accordion-item .accordion-body p {
+            margin-bottom: 1rem;
+        }
+        .footer {
+            background-color: #ffca3a; /* Soft Yellow */
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: #ff5e5e; /* Vibrant Red */
+            text-align: center;
+        }
+        /* Add animations */
+        .jumbotron .container {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        /* Add hover effects */
+        .btn-primary, .btn-light {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        body {
+            background-color: #F5F5F5; /* Light Gray */
+            color: #333; /* Dark text for contrast */
+            font-family: 'Poppins', sans-serif; /* Modern, readable font */
+        }
+        .navbar {
+            background-color: #ffb4ae; /* Vibrant Red */
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0 0 15px 15px;
+        }
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+        }
+        .navbar-brand:hover {
+            color: #fff;
+        }
+        .nav-link {
+            color: #fff;
+            margin-right: 1rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #FFD700; /* Soft Yellow for hover effect */
+        }
+        .jumbotron {
+            background: linear-gradient(to right, rgba(255, 111, 97, 0.6), rgba(255, 111, 97, 0.2)),
+                        url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png'); /* Light turquoise with pattern */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 25vh; /* Adjusted height */
+            background-size: cover;
+            background-blend-mode: multiply;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 15px 15px;
+        }
+        .jumbotron h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .jumbotron p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+        .meditation-section {
+            background-color: #F9F9F9; /* Light Gray for resources background */
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            margin: 2rem;
+        }
+        .meditation-section h2 {
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: #FF6F61; /* Vibrant Red */
+        }
+        .meditation-section p {
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        .meditation-section .btn-light {
+            background-color: #fff;
+            color: #FF6F61; /* Vibrant Red */
+            border: 1px solid #FF6F61; /* Vibrant Red border */
+            padding: 0.75rem 1.5rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .meditation-section .btn-light:hover {
+            background-color: #FF6F61; /* Vibrant Red */
+            color: #fff;
+        }
+        .meditation-videos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .meditation-videos iframe {
+            max-width: 100%;
+            flex: 1 1 45%;
+            margin: 1rem 0;
+            border-radius: 15px;
+        }
+        .meditation-timer {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .meditation-timer input {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            margin-right: 1rem;
+            font-family: 'Poppins', sans-serif;
+            width: 60px;
+            text-align: center;
+        }
+        .meditation-timer .btn-primary {
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            border-radius: 25px;
+            background-color: #FF6F61;
+            border: none;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .meditation-timer .btn-primary:hover {
+            background-color: #FF5733; /* Darker Red */
+        }
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+        .progress {
+            height: 100%;
+            background-color: #FF6F61;
+            border-radius: 5px;
+        }
+        .footer {
+            background-color: #FFD700; /* Soft Yellow */
+            color: #333;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+        }
+        .tips-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .tips-carousel .tip {
+            display: none;
+        }
+        .tips-carousel .active {
+            display: block;
+        }
+        .carousel-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .carousel-buttons button {
+            background-color: #FF6F61;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .carousel-buttons button:hover {
+            background-color: #FF5733;
+        }
+        .icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">Habit Tracker</a>
+        <div class="nav-links">
+            <a class="nav-link" href="#jumbotron">Home</a>
+            <a class="nav-link" href="#meditation">Meditation</a>
+        </div>
+    </nav>
+
+    <div class="jumbotron" id="jumbotron">
+        <div class="container">
+            <h1>Meditation</h1>
+            <p>Find peace and clarity through guided meditation</p>
+        </div>
+    </div>
+
+    <div class="meditation-section" id="meditation">
+        <h2>Benefits of Meditation</h2>
+        <p>Meditation offers numerous benefits including reducing stress, improving concentration, enhancing self-awareness, promoting emotional health, lengthening attention span, and generating kindness. Below are some resources to help you get started on your meditation journey.</p>
+
+        <h2>Guided Meditation Videos</h2>
+        <div class="meditation-videos">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/6p_yaNFSYao" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZToicYcHIOU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="meditation-timer">
+            <h2>Meditation Timer</h2>
+            <input type="number" id="minutes" placeholder="Minutes">
+            <input type="number" id="seconds" placeholder="Seconds">
+            <button class="btn-primary" onclick="startTimer()">Start Timer</button>
+            <div class="timer-display" id="timerDisplay">00:00</div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+
+        <h2>Tips for Beginners</h2>
+        <div class="tips-carousel">
+            <div class="tip active">
+                <p><strong>Start Small:</strong> Begin with just a few minutes each day to build a habit.</p>
+            </div>
+            <div class="tip">
+                <p><strong>Find a Quiet Space:</strong> Choose a place where you won't be disturbed during your meditation.</p>
+            </div>
+            <div class="tip">
+                <p><strong>Focus on Your Breath:</strong> Use your breath as an anchor to bring your attention back when your mind wanders.</p>
+            </div>
+            <div class="tip">
+                <p><strong>Don't Judge Yourself:</strong> It's normal for your mind to wander. Gently bring your focus back without judgment.</p>
+            </div>
+            <div class="carousel-buttons">
+                <button onclick="prevTip()">Previous</button>
+                <button onclick="nextTip()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2024 Habit Tracker
+    </div>
+
+    <script>
+        let currentTipIndex = 0;
+        const tips = document.querySelectorAll('.tip');
+        const progress = document.getElementById('progress');
+
+        function showTip(index) {
+            tips.forEach((tip, i) => {
+                tip.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextTip() {
+            currentTipIndex = (currentTipIndex + 1) % tips.length;
+            showTip(currentTipIndex);
+        }
+
+        function prevTip() {
+            currentTipIndex = (currentTipIndex - 1 + tips.length) % tips.length;
+            showTip(currentTipIndex);
+        }
+
+        function startTimer() {
+            const minutes = parseInt(document.getElementById('minutes').value) || 0;
+            const seconds = parseInt(document.getElementById('seconds').value) || 0;
+            let time = minutes * 60 + seconds;
+
+            if (time <= 0) {
+                alert('Please set a valid time.');
+                return;
+            }
+
+            const timerDisplay = document.getElementById('timerDisplay');
+            timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            progress.style.width = '100%';
+
+            const timer = setInterval(() => {
+                if (time <= 0) {
+                    clearInterval(timer);
+                    alert('Time is up!');
+                } else {
+                    time--;
+                    const minutes = Math.floor(time / 60);
+                    const seconds = time % 60;
+                    timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                    progress.style.width = `${(time / (minutes * 60 + seconds + 1)) * 100}%`;
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

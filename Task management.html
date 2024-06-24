@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5F5; /* Light Gray */
+            color: #333; /* Dark text for contrast */
+        }
+        /* Navbar Styles */
+        .navbar {
+            background-color: #ffb4ae; /* Vibrant Red */
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .nav-item {
+            margin-right: 1rem;
+        }
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-link:hover {
+            background-color: #ffca3a; /* Soft Yellow for hover effect */
+        }
+        /* Section Styles */
+        .resources-section {
+            background-color: #F9F9F9; /* Light Gray for resources background */
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 4rem; /* Adjust for navbar height */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .task-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .task-form input,
+        .task-form textarea,
+        .task-form button {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        .task-form button {
+            background-color: #ff5e5e; /* Vibrant Red */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .task-form button:hover {
+            background-color: #ff4242; /* Darker Red */
+        }
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .task {
+            background-color: #fff;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .task h3 {
+            margin-top: 0;
+        }
+        .task-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        .task-actions button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .task-actions button:hover {
+            background-color: #ff5e5e; /* Vibrant Red */
+            color: #fff;
+        }
+        .jumbotron {
+            background: linear-gradient(to right, rgba(255, 94, 94, 0.6), rgba(255, 94, 94, 0.2)),
+                        url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png'); /* Light turquoise with pattern */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 30vh; /* Full height */
+            background-size: cover;
+            background-blend-mode: multiply;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .jumbotron h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .jumbotron p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+        .resources-section {
+            background-color: #F9F9F9; /* Light Gray for resources background */
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .resources-section h2 {
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: #ff5e5e; /* Vibrant Red */
+        }
+        .resources-section p {
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .resources-section .btn-light {
+            background-color: #fff;
+            color: #ff5e5e; /* Vibrant Red */
+            border: 1px solid #ff5e5e; /* Vibrant Red border */
+            margin-top: 1rem;
+        }
+        .resources-section .btn-light:hover {
+            background-color: #ff5e5e; /* Vibrant Red */
+            color: #fff;
+        }
+        .accordion-item {
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .accordion-item .accordion-header {
+            background-color: #ff5e5e; /* Vibrant Red */
+            color: #fff;
+            padding: 1rem 2rem;
+            cursor: pointer;
+        }
+        .accordion-item .accordion-header:hover {
+            background-color: #ff4242; /* Darker Red */
+        }
+        .accordion-item .accordion-body {
+            padding: 1rem 2rem;
+        }
+        .accordion-item .accordion-body p {
+            margin-bottom: 1rem;
+        }
+        .footer {
+            background-color: #ffca3a; /* Soft Yellow */
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: #ff5e5e; /* Vibrant Red */
+            text-align: center;
+        }
+        /* Add animations */
+        .jumbotron .container {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        /* Add hover effects */
+        .btn-primary, .btn-light {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* Footer Styles */
+        .footer {
+            background-color: #ffca3a; /* Soft Yellow */
+            color: #333;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+        /* Additional styles for clarity */
+        .task-form .hint {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .task-list .completed {
+            opacity: 0.7;
+        }
+        .error-message {
+            color: #ff3333;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">Task Management</a>
+        <div class="nav-links">
+            <a class="nav-link" href="#jumbotron">Home</a>
+            <a class="nav-link" href="#resources">Resources</a>
+        </div>
+    </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron" id="jumbotron">
+        <div class="container">
+            <h1>Task Management</h1>
+            <p>Efficient task management ensures productivity without overwhelm.</p>
+        </div>
+    </div>
+
+    <!-- Task Management Section -->
+    <section class="resources-section" id="resources">
+        <div class="container">
+            <h2>Task Management</h2>
+            <!-- Task Form -->
+            <form id="taskForm" class="task-form">
+                <input type="text" id="taskName" placeholder="Task Name" required>
+                <div class="hint">Enter a descriptive name for your task.</div>
+                <textarea id="description" placeholder="Description"></textarea>
+                <input type="date" id="dueDate" required>
+                <div class="hint">Select the deadline for your task.</div>
+                <button type="submit">Add Task</button>
+                <div class="error-message" id="errorMessage"></div>
+            </form>
+
+            <!-- Task List -->
+            <ul id="taskList" class="task-list">
+                <!-- Tasks will be dynamically added here -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        &copy; 2024 Habit Tracker
+    </footer>
+
+    <!-- JavaScript for Task Management -->
+    <script>
+        // Function to display tasks
+        function displayTasks(tasks) {
+            const taskList = document.getElementById('taskList');
+            taskList.innerHTML = '';
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <div class="task">
+                        <h3>${task.task_name}</h3>
+                        <p>${task.description}</p>
+                        <p>Due Date: ${task.due_date}</p>
+                        <div class="task-actions">
+                            <button onclick="deleteTask(${task.task_id})">Delete</button>
+                            <button onclick="markComplete(${task.task_id})">Complete</button>
+                        </div>
+                    </div>
+                `;
+                taskList.appendChild(li);
+            });
+        }
+
+        // Function to add a new task
+        function addTask(taskName, description, dueDate) {
+            const task = {
+                task_id: Date.now(), // Simulate unique ID (replace with backend generated ID)
+                task_name: taskName,
+                description: description,
+                due_date: dueDate
+            };
+
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.push(task);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+
+            displayTasks(tasks);
+        }
+
+        // Function to delete a task
+        function deleteTask(taskId) {
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks = tasks.filter(task => task.task_id !== taskId);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            displayTasks(tasks);
+        }
+
+        // Function to mark a task as complete (update status)
+        function markComplete(taskId) {
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.forEach(task => {
+                if (task.task_id === taskId) {
+                    // Update task status (e.g., set status = 'completed')
+                    // Update backend or local storage accordingly
+                }
+            });
+            displayTasks(tasks);
+        }
+
+        // Function to handle form submission
+        document.getElementById('taskForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const taskName = document.getElementById('taskName').value.trim();
+            const description = document.getElementById('description').value.trim();
+            const dueDate = document.getElementById('dueDate').value;
+
+            if (!taskName || !dueDate) {
+                document.getElementById('errorMessage').textContent = 'Task Name and Due Date are required.';
+                return;
+            }
+
+            // Clear any previous error message
+            document.getElementById('errorMessage').textContent = '';
+
+            // Add task and provide feedback
+            addTask(taskName, description, dueDate);
+            document.getElementById('taskName').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('dueDate').value = '';
+            document.getElementById('errorMessage').textContent = '';
+
+            // Optional: Provide feedback to user
+            const feedbackMessage = document.createElement('div');
+            feedbackMessage.textContent = 'Task added successfully.';
+            feedbackMessage.classList.add('feedback-message');
+            document.getElementById('taskForm').appendChild(feedbackMessage);
+            setTimeout(() => {
+                feedbackMessage.remove();
+            }, 3000); // Clear feedback message after 3 seconds
+        });
+
+        // Initial display of tasks when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            displayTasks(tasks);
+        });
+    </script>
+</body>
+</html>
+

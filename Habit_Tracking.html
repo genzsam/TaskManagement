@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F5F5F5; /* Light Gray */
+            color: #333; /* Dark text for contrast */
+            font-family: 'Poppins', sans-serif; /* Modern, readable font */
+        }
+        .navbar {
+            background-color:#ffb4ae; /* Vibrant Red */
+            padding: 1rem;
+        }
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+        }
+        .navbar-brand:hover {
+            color: #fff;
+        }
+        .nav-link {
+            color: #fff;
+            margin-right: 1rem;
+        }
+        .nav-link:hover {
+            color: #ffca3a; /* Soft Yellow for hover effect */
+        }
+        .btn-primary {
+            background-color: #ff5e5e; /* Vibrant Red */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #ff4242; /* Darker Red */
+        }
+        .jumbotron {
+            background: linear-gradient(to right, rgba(255, 94, 94, 0.6), rgba(255, 94, 94, 0.2)),
+                        url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png'); /* Light turquoise with pattern */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 25vh; /* Adjusted height */
+            background-size: cover;
+            background-blend-mode: multiply;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .jumbotron h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .jumbotron p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+        .resources-section {
+            background-color: #F9F9F9; /* Light Gray for resources background */
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .resources-section h2 {
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: #ff5e5e; /* Vibrant Red */
+        }
+        .resources-section p {
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .resources-section .btn-light {
+            background-color: #fff;
+            color: #ff5e5e; /* Vibrant Red */
+            border: 1px solid #ff5e5e; /* Vibrant Red border */
+            margin-top: 1rem;
+        }
+        .resources-section .btn-light:hover {
+            background-color: #ff5e5e; /* Vibrant Red */
+            color: #fff;
+        }
+        .accordion-item {
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .accordion-item .accordion-header {
+            background-color: #ff5e5e; /* Vibrant Red */
+            color: #fff;
+            padding: 1rem 2rem;
+            cursor: pointer;
+        }
+        .accordion-item .accordion-header:hover {
+            background-color: #ff4242; /* Darker Red */
+        }
+        .accordion-item .accordion-body {
+            padding: 1rem 2rem;
+        }
+        .accordion-item .accordion-body p {
+            margin-bottom: 1rem;
+        }
+        .footer {
+            background-color: #ffca3a; /* Soft Yellow */
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: #ff5e5e; /* Vibrant Red */
+            text-align: center;
+        }
+        /* Add animations */
+        .jumbotron .container {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        /* Add hover effects */
+        .btn-primary, .btn-light {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .habit-tracker {
+            background-color: #ffffff;
+            padding: 4rem 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .habit-tracker h2 {
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: #ff5e5e; /* Vibrant Red */
+            text-align: center;
+        }
+        .habit-form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .habit-form input {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        .habit-form .btn-primary {
+            padding: 0.5rem 1rem;
+        }
+        .habit-list {
+            list-style: none;
+            padding: 0;
+        }
+        .habit-list li {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .habit-list .habit-item {
+            flex: 1;
+        }
+        .habit-list .habit-dates {
+            display: flex;
+        }
+        .habit-list .habit-dates span {
+            width: 20px;
+            height: 20px;
+            margin-left: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        .habit-list .habit-dates span.completed {
+            background-color: #ff5e5e;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">Habit Tracker</a>
+        <div class="nav-links">
+            <a class="nav-link" href="#jumbotron">Home</a>
+            <a class="nav-link" href="#resources">Resources</a>
+        </div>
+    </nav>
+
+    <div class="jumbotron" id="jumbotron">
+        <div class="container">
+            <h1>Track Your Habits</h1>
+            <p>Build good habits and achieve your goals</p>
+        </div>
+    </div>
+
+    <div class="habit-tracker">
+        <h2>Habit Tracker</h2>
+        <div class="habit-form">
+            <input type="text" id="habitInput" placeholder="Enter a new habit">
+            <button class="btn-primary" onclick="addHabit()">Add Habit</button>
+        </div>
+        <ul class="habit-list" id="habitList"></ul>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Habit Tracker. All rights reserved.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHabits();
+        });
+
+        function loadHabits() {
+            const habits = JSON.parse(localStorage.getItem('habits')) || [];
+            habits.forEach(habit => {
+                addHabitToDOM(habit);
+            });
+        }
+
+        function addHabit() {
+            const habitInput = document.getElementById('habitInput');
+            const habitText = habitInput.value.trim();
+
+            if (habitText) {
+                const habit = {
+                    text: habitText,
+                    dates: {}
+                };
+
+                addHabitToDOM(habit);
+                saveHabit(habit);
+                habitInput.value = '';
+            }
+        }
+
+        function addHabitToDOM(habit) {
+            const habitList = document.getElementById('habitList');
+            const li = document.createElement('li');
+
+            li.innerHTML = `
+                <div class="habit-item">${habit.text}</div>
+                <div class="habit-dates">${generateDateCircles(habit.dates)}</div>
+            `;
+
+            habitList.appendChild(li);
+        }
+
+        function generateDateCircles(dates) {
+            const daysInMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
+            let circles = '';
+
+            for (let i = 1; i <= 21 ; i++) {
+                const day = `day${i}`;
+                const completed = dates[day] ? 'completed' : '';
+                circles += `<span class="${completed}" onclick="toggleDate(this, '${day}')">${i}</span>`;
+            }
+
+            return circles;
+        }
+
+        function toggleDate(span, day) {
+            span.classList.toggle('completed');
+
+            const habitText = span.parentElement.previousElementSibling.textContent;
+            const habits = JSON.parse(localStorage.getItem('habits')) || [];
+            const habit = habits.find(h => h.text === habitText);
+
+            habit.dates[day] = !habit.dates[day];
+            localStorage.setItem('habits', JSON.stringify(habits));
+        }
+
+        function saveHabit(habit) {
+            const habits = JSON.parse(localStorage.getItem('habits')) || [];
+            habits.push(habit);
+            localStorage.setItem('habits', JSON.stringify(habits));
+        }
+    </script>
+</body>
+</html>

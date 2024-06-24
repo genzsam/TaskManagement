@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slime - Personal Development and Productivity</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F5F5F5; /* Light Gray */
+            color: #333; /* Dark text for contrast */
+            font-family: 'Poppins', sans-serif; /* Modern, readable font */
+        }
+        .navbar {
+            background-color:#ffb4ae; /* Vibrant Red */
+        }
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+        }
+        .navbar-brand:hover {
+            color: #fff;
+        }
+        .nav-link {
+            color: #fff;
+            margin-right: 1rem;
+        }
+        .nav-link:hover {
+            color: #ffca3a; /* Soft Yellow for hover effect */
+        }
+        .btn-primary {
+            background-color: #ff5e5e; /* Vibrant Red */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #ff4242; /* Darker Red */
+        }
+        .jumbotron {
+            background: linear-gradient(to right, rgba(255, 94, 94, 0.6), rgba(255, 94, 94, 0.2)),
+                        url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png'); /* Light turquoise with pattern */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh; /* Full height */
+            background-size: cover;
+            background-blend-mode: multiply;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .jumbotron h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .jumbotron p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+        .resources-section {
+            background-color: #F9F9F9; /* Light Gray for resources background */
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .resources-section h2 {
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: #ff5e5e; /* Vibrant Red */
+        }
+        .resources-section p {
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .resources-section .btn-light {
+            background-color: #fff;
+            color: #ff5e5e; /* Vibrant Red */
+            border: 1px solid #ff5e5e; /* Vibrant Red border */
+            margin-top: 1rem;
+        }
+        .resources-section .btn-light:hover {
+            background-color: #ff5e5e; /* Vibrant Red */
+            color: #fff;
+        }
+        .accordion-item {
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .accordion-item .accordion-header {
+            background-color: #ff5e5e; /* Vibrant Red */
+            color: #fff;
+            padding: 1rem 2rem;
+            cursor: pointer;
+        }
+        .accordion-item .accordion-header:hover {
+            background-color: #ff4242; /* Darker Red */
+        }
+        .accordion-item .accordion-body {
+            padding: 1rem 2rem;
+        }
+        .accordion-item .accordion-body p {
+            margin-bottom: 1rem;
+        }
+        .footer {
+            background-color: #ffca3a; /* Soft Yellow */
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: #ff5e5e; /* Vibrant Red */
+            text-align: center;
+        }
+        /* Add animations */
+        .jumbotron .container {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        /* Add hover effects */
+        .btn-primary, .btn-light {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Slime</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="file:///C:/Users/Dell/Documents/Slime/Task%20management.html#">Task Management</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="C:\Users\Dell\Documents\Slime\Habit_Tracking.html">Habit Tracking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="C:\Users\Dell\Documents\Slime\Meditation.html">Meditation</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Resources
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                        <a class="dropdown-item" href="#">Blogs</a>
+                        <a class="dropdown-item" href="#">Newsletter</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">User Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary" href="#">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">Welcome to Slime</h1>
+            <p class="lead">Your personal development and productivity companion.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Content about Slime and Personal Development -->
+    <section class="resources-section">
+        <div class="container">
+            <h2>Why Choose Slime for Personal Development?</h2>
+
+            <!-- Accordion for points -->
+            <div class="accordion-item">
+                <div class="accordion-header" data-toggle="collapse" data-target="#point1" aria-expanded="true" aria-controls="point1">
+                    Seamless Integration
+                </div>
+                <div id="point1" class="collapse show accordion-body">
+                    <p>Slime seamlessly integrates platforms like emails, calendars, and messaging apps (social media), enhancing your productivity and workflow.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" data-toggle="collapse" data-target="#point2" aria-expanded="false" aria-controls="point2">
+                    AI-Powered Personalization
+                </div>
+                <div id="point2" class="collapse accordion-body">
+                    <p>Using AI, Slime generates personalized development plans based on your goals, interests, and progress, ensuring tailored recommendations.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" data-toggle="collapse" data-target="#point3" aria-expanded="false" aria-controls="point3">
+                    Adaptive Learning
+                </div>
+                <div id="point3" class="collapse accordion-body">
+                    <p>Slime adapts its content and recommendations based on your progress and feedback, making your personal growth journey dynamic and effective.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" data-toggle="collapse" data-target="#point4" aria-expanded="false" aria-controls="point4">
+                    Gamification Elements
+                </div>
+                <div id="point4" class="collapse accordion-body">
+                    <p>Integrating gamification elements such as rewards, levels, and achievements, Slime makes personal development engaging and motivating.</p>
+                </div>
+            </div>
+
+            <a href="#" class="btn btn-light btn-lg">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer mt-5">
+        <p>&copy; 2024 Slime. All rights reserved.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
